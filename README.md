@@ -145,18 +145,6 @@ Input => Convolution => ReLU => Pooling => Convolution => ReLU => Pooling => Ful
 
 **Layer 5 (Fully Connected):** This should have 10 outputs.
 
-### 2.  VGGNet
-VGGNet was first introduced in 2014 by K. Simonyan and A. Zisserman from the University of Oxford in a paper called [Very Deep Convolutional Networks for Large-Scale Image Recognition](https://arxiv.org/pdf/1409.1556.pdf). They were investigating the convolutional network depth on its accuracy in the large-scale image recognition setting. Their main contribution is a thorough evaluation of networks of increasing depth using an architecture with very small (3x3) convolution filters, which shows that a significant improvement on the prior-art configurations can be achieved by pushing the depth to 16-19 weight layers.
-
-**VGGNet architecture:**
-<figure>
- <img src="VGGNet.png" width="1072" alt="Combined Image" />
- <figcaption>
- <p></p> 
- </figcaption>
-</figure>
-
-The original VGGNet architecture has 16-19 layers, but I've excluded some of them and implemented a modified version of only 12 layers to save computational resources.
 
 This ConvNet follows these steps:
 
@@ -355,7 +343,4 @@ In all cases, the model was very certain (80% - 100%).
 
 ## Conclusion
 
-Using VGGNet, we've been able to reach a very high accuracy rate. We can observe that the models saturate after nearly 10 epochs, so we can save some computational resources and reduce the number of epochs to 10.
-We can also try other preprocessing techniques to further improve the model's accuracy..
-We can further improve on the model using hierarchical CNNs to first identify broader groups (like speed signs) and then have CNNs to classify finer features (such as the actual speed limit)
-This model will only work on input examples where the traffic signs are centered in the middle of the image. It doesn't have the capability to detect signs in the image corners.
+
