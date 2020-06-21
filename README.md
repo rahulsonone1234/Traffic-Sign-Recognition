@@ -61,54 +61,7 @@ Number of classes = 43
 
 **Then, we used `matplotlib` plot sample images from each subset.**
 
-
-<figure>
- <img src="./traffic-signs-data/Screenshots/Train.png" width="1072" alt="Combined Image" />
- <figcaption>
- <p></p> 
- </figcaption>
-</figure>
-
-
-<figure>
- <img src="./traffic-signs-data/Screenshots/Test.png" width="1072" alt="Combined Image" />
- <figcaption>
- <p></p> 
- </figcaption>
-</figure>
-
-<figure>
- <img src="./traffic-signs-data/Screenshots/Valid.png" width="1072" alt="Combined Image" />
- <figcaption>
- <p></p> 
- </figcaption>
-</figure>
-
-
 **And finally, we will use `numpy` to plot a histogram of the count of images in each unique class.**
-
-
-<figure>
- <img src="./traffic-signs-data/Screenshots/TrainHist.png" width="1072" alt="Combined Image" />
- <figcaption>
- <p></p> 
- </figcaption>
-</figure>
-
-<figure>
- <img src="./traffic-signs-data/Screenshots/TestHist.png" width="1072" alt="Combined Image" />
- <figcaption>
- <p></p> 
- </figcaption>
-</figure>
-
-<figure>
- <img src="./traffic-signs-data/Screenshots/ValidHist.png" width="1072" alt="Combined Image" />
- <figcaption>
- <p></p> 
- </figcaption>
-</figure>
-
 ---
 
 ## Step 3: Data Preprocessing
@@ -134,21 +87,7 @@ In this step, we will apply several preprocessing steps to the input images to a
 
 3. **Local Histogram Equalization**: This technique simply spreads out the most frequent intensity values in an image, resulting in enhancing images with low contrast. Applying this technique will be very helpfull in our case since the dataset in hand has real world images, and many of them has low contrast. We will use `skimage` to apply local histogram equalization to the training images.
 
-<figure>
- <img src="./traffic-signs-data/Screenshots/Equalized.png" width="1072" alt="Combined Image" />
- <figcaption>
- <p></p> 
- </figcaption>
-</figure>
-
 4. **Normalization**: Normalization is a process that changes the range of pixel intensity values. Usually the image data should be normalized so that the data has mean zero and equal variance.
-
-<figure>
- <img src="./traffic-signs-data/Screenshots/Normalized.png" width="1072" alt="Combined Image" />
- <figcaption>
- <p></p> 
- </figcaption>
-</figure>
 
 ---
 
@@ -172,7 +111,7 @@ LeNet-5 is a convolutional network designed for handwritten and machine-printed 
 
 **LeNet-5 architecture:**
 <figure>
- <img src="LeNet.png" width="1072" alt="Combined Image" />
+ <img src="" width="1072" alt="Combined Image" />
  <figcaption>
  <p></p> 
  </figcaption>
