@@ -252,6 +252,13 @@ In all cases, the model was very certain (80% - 100%).
 
 
 ---
+<figure>
+ <img src="technology.png" width="400" alt="Combined Image" />
+ <figcaption>
+ <p></p> 
+ </figcaption>
+</figure>
+
 
 ## Conclusion
 
