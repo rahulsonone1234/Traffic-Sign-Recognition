@@ -212,13 +212,6 @@ We've been able to reach a **Test accuracy of 96.06%**. A remarkable performance
 
 Now we'll plot the confusion matrix to see where the model actually fails.
 
-<figure>
- <img src="testing.png" width="400" alt="Combined Image" />
- <figcaption>
- <p></p> 
- </figcaption>
-</figure>
-
 We observe some clusters in the confusion matrix above. It turns out that the various speed limits are sometimes misclassified among themselves. Similarly, traffic signs with traingular shape are misclassified among themselves. We can further improve on the model using hierarchical CNNs to first identify broader groups (like speed signs) and then have CNNs to classify finer features (such as the actual speed limit).
 
 ---
@@ -229,7 +222,7 @@ In this step, we will use the model to predict traffic signs type of 5 random im
 Number of new testing examples:  5
 
 <figure>
- <img src="finaltesting.png" width="400" alt="Combined Image" />
+ <img src="finaltesting.PNG" width="400" alt="Combined Image" />
  <figcaption>
  <p></p> 
  </figcaption>
@@ -242,7 +235,7 @@ For instance, we have easy to predict signs like the "Stop" and the "No entry". 
 On the other hand, we have signs belong to classes where has poor accuracy, like the "Speed limit" sign, because as stated above it turns out that the various speed limits are sometimes misclassified among themselves, and the "Pedestrians" sign, because traffic signs with traingular shape are misclassified among themselves.
 
 <figure>
- <img src="stop.png" width="1072" alt="Combined Image" />
+ <img src="stop.PNG" width="1072" alt="Combined Image" />
  <figcaption>
  <p></p> 
  </figcaption>
@@ -263,13 +256,13 @@ In all cases, the model was very certain (80% - 100%).
 ## Conclusion
 
 <figure>
- <img src="Screenshot(80).png" width="400" alt="Combined Image" />
+ <img src="Screenshot (80).png" width="400" alt="Combined Image" />
  <figcaption>
  <p></p> 
  </figcaption>
 </figure>
 <figure>
- <img src="Screenshot(81).png" width="400" alt="Combined Image" />
+ <img src="Screenshot (81).png" width="400" alt="Combined Image" />
  <figcaption>
  <p></p> 
  </figcaption>
