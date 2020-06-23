@@ -78,13 +78,6 @@ In this step, we will apply several preprocessing steps to the input images to a
 
 2. **Grayscaling**: In their paper ["Traffic Sign Recognition with Multi-Scale Convolutional Networks"](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf) published in 2011, P. Sermanet and Y. LeCun stated that using grayscale images instead of color improves the ConvNet's accuracy. We will use `OpenCV` to convert the training images into grey scale.
 
-<figure>
- <img src="./traffic-signs-data/Screenshots/Gray.png" width="1072" alt="Combined Image" />
- <figcaption>
- <p></p> 
- </figcaption>
-</figure>
-
 3. **Local Histogram Equalization**: This technique simply spreads out the most frequent intensity values in an image, resulting in enhancing images with low contrast. Applying this technique will be very helpfull in our case since the dataset in hand has real world images, and many of them has low contrast. We will use `skimage` to apply local histogram equalization to the training images.
 
 4. **Normalization**: Normalization is a process that changes the range of pixel intensity values. Usually the image data should be normalized so that the data has mean zero and equal variance.
@@ -99,29 +92,31 @@ We'll use Convolutional Neural Networks to classify the images in this dataset. 
 We will implement two of the most famous ConvNets. Our goal is to reach an accuracy of +95% on the validation set.
 
 I'll start by explaining each network architecture, then implement it using TensorFlow.
-
+<figure>
+ <img src="architecture.png" width="1072" alt="Combined Image" />
+ <figcaption>
+ <p></p> 
+ </figcaption>
+</figure>
 **Notes**:
 1. We specify the learning rate of 0.001, which tells the network how quickly to update the weights.
 2. We minimize the loss function using the Adaptive Moment Estimation (Adam) Algorithm. Adam is an optimization algorithm introduced by D. Kingma and J. Lei Ba in a 2015 paper named [Adam: A Method for Stochastic Optimization](https://arxiv.org/abs/1412.6980). Adam algorithm computes adaptive learning rates for each parameter. In addition to storing an exponentially decaying average of past squared gradients like [Adadelta](https://arxiv.org/pdf/1212.5701.pdf) and [RMSprop](https://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf) algorithms, Adam also keeps an exponentially decaying average of past gradients mtmt, similar to [momentum algorithm](http://www.sciencedirect.com/science/article/pii/S0893608098001166?via%3Dihub), which in turn produce better results.
 3. we will run `minimize()` function on the optimizer which use backprobagation to update the network and minimize our training loss.
 
 
-### 1.  LeNet-5
-LeNet-5 is a convolutional network designed for handwritten and machine-printed character recognition. It was introduced by the famous [Yann LeCun](https://en.wikipedia.org/wiki/Yann_LeCun) in his paper [Gradient-Based Learning Applied to Document Recognition](http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf) in 1998. Although this ConvNet is intended to classify hand-written digits, we're confident it have a very high accuracy when dealing with traffic signs, given that both hand-written digits and traffic signs are given to the computer in the form of pixel images.
 
-**LeNet-5 architecture:**
-<figure>
- <img src="" width="1072" alt="Combined Image" />
- <figcaption>
- <p></p> 
- </figcaption>
-</figure>
 
 This ConvNet follows these steps:
 
 Input => Convolution => ReLU => Pooling => Convolution => ReLU => Pooling => FullyConnected => ReLU => FullyConnected
 
 **Layer 1 (Convolutional):** The output shape should be 28x28x6.
+<figure>
+ <img src="model.png" width="1072" alt="Combined Image" />
+ <figcaption>
+ <p></p> 
+ </figcaption>
+</figure>
 
 **Activation.** Your choice of activation function.
 
@@ -208,93 +203,17 @@ Now, we'll run the training data through the training pipeline to train the mode
 - And after training, we will save the model.
 - A low accuracy on the training and validation sets imply underfitting. A high accuracy on the training set but low accuracy on the validation set implies overfitting.
 
-### LeNet Model
-```
-EPOCH 1 : Validation Accuracy = 81.451%
-EPOCH 2 : Validation Accuracy = 87.755%
-EPOCH 3 : Validation Accuracy = 90.113%
-EPOCH 4 : Validation Accuracy = 91.519%
-EPOCH 5 : Validation Accuracy = 90.658%
-EPOCH 6 : Validation Accuracy = 92.608%
-EPOCH 7 : Validation Accuracy = 92.902%
-EPOCH 8 : Validation Accuracy = 92.585%
-EPOCH 9 : Validation Accuracy = 92.993%
-EPOCH 10 : Validation Accuracy = 92.766%
-EPOCH 11 : Validation Accuracy = 93.356%
-EPOCH 12 : Validation Accuracy = 93.469%
-EPOCH 13 : Validation Accuracy = 93.832%
-EPOCH 14 : Validation Accuracy = 94.603%
-EPOCH 15 : Validation Accuracy = 93.333%
-EPOCH 16 : Validation Accuracy = 93.787%
-EPOCH 17 : Validation Accuracy = 94.263%
-EPOCH 18 : Validation Accuracy = 92.857%
-EPOCH 19 : Validation Accuracy = 93.832%
-EPOCH 20 : Validation Accuracy = 93.605%
-EPOCH 21 : Validation Accuracy = 93.447%
-EPOCH 22 : Validation Accuracy = 94.286%
-EPOCH 23 : Validation Accuracy = 94.671%
-EPOCH 24 : Validation Accuracy = 94.172%
-EPOCH 25 : Validation Accuracy = 94.399%
-EPOCH 26 : Validation Accuracy = 95.057%
-EPOCH 27 : Validation Accuracy = 95.329%
-EPOCH 28 : Validation Accuracy = 94.218%
-EPOCH 29 : Validation Accuracy = 94.286%
-EPOCH 30 : Validation Accuracy = 94.853%
-```
-We've been able to reach a maximum accuracy of **95.3%** on the validation set over 30 epochs, using a learning rate of 0.001.
 
-Now, we'll train the VGGNet model and evaluate it's accuracy.
-
-### VGGNet Model
-```
-EPOCH 1 : Validation Accuracy = 31.655%
-EPOCH 2 : Validation Accuracy = 59.592%
-EPOCH 3 : Validation Accuracy = 78.639%
-EPOCH 4 : Validation Accuracy = 88.617%
-EPOCH 5 : Validation Accuracy = 92.812%
-EPOCH 6 : Validation Accuracy = 95.601%
-EPOCH 7 : Validation Accuracy = 96.667%
-EPOCH 8 : Validation Accuracy = 97.528%
-EPOCH 9 : Validation Accuracy = 98.390%
-EPOCH 10 : Validation Accuracy = 98.322%
-EPOCH 11 : Validation Accuracy = 98.776%
-EPOCH 12 : Validation Accuracy = 98.730%
-EPOCH 13 : Validation Accuracy = 98.617%
-EPOCH 14 : Validation Accuracy = 98.571%
-EPOCH 15 : Validation Accuracy = 99.025%
-EPOCH 16 : Validation Accuracy = 99.116%
-EPOCH 17 : Validation Accuracy = 98.776%
-EPOCH 18 : Validation Accuracy = 98.707%
-EPOCH 19 : Validation Accuracy = 98.526%
-EPOCH 20 : Validation Accuracy = 98.685%
-EPOCH 21 : Validation Accuracy = 99.297%
-EPOCH 22 : Validation Accuracy = 99.320%
-EPOCH 23 : Validation Accuracy = 99.297%
-EPOCH 24 : Validation Accuracy = 99.161%
-EPOCH 25 : Validation Accuracy = 98.798%
-EPOCH 26 : Validation Accuracy = 98.707%
-EPOCH 27 : Validation Accuracy = 99.048%
-EPOCH 28 : Validation Accuracy = 99.116%
-EPOCH 29 : Validation Accuracy = 98.458%
-EPOCH 30 : Validation Accuracy = 99.161%
-```
-
-Using VGGNet, we've been able to reach a maximum **validation accuracy of 99.3%**. As you can observe, the model has nearly saturated after only 10 epochs, so we can reduce the epochs to 10 and save computational resources.
-
-We'll use this model to predict the labels of the test set.
-
-
----
 
 ## Step 5: Testing the Model using the Test Set
 
 Now, we'll use the testing set to measure the accuracy of the model over unknown examples.
-We've been able to reach a **Test accuracy of 97.6%**. A remarkable performance.
+We've been able to reach a **Test accuracy of 96.06%**. A remarkable performance.
 
 Now we'll plot the confusion matrix to see where the model actually fails.
 
 <figure>
- <img src="./traffic-signs-data/Screenshots/cm.png" width="1072" alt="Combined Image" />
+ <img src="testing.png" width="1072" alt="Combined Image" />
  <figcaption>
  <p></p> 
  </figcaption>
